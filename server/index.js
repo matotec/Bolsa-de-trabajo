@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post("/api/insert", (req, res) => {    
+app.post("/api/insertAlum", (req, res) => {    
     const nombre = req.body.nombre
     const apellido = req.body.apellido
         const sqlQuery = 
@@ -24,6 +24,27 @@ app.post("/api/insert", (req, res) => {
             console.log(err)
         });   
 });
+
+app.get('/api/getAlum', (req, res) =>{
+    const sqlQuery = 
+        "SELECT * FROM alumnos"
+    db.query(sqlQuery, (err, result) => {
+        res.send(result)
+    });    
+})
+
+app.get('/api/searchAlum/:searchText', (req, res) =>{
+    const searchText = req.params.searchText
+    console.log("aca", searchText)
+        const sqlQuery = 
+        `SELECT * FROM alumnos WHERE nombre LIKE '%${searchText}%';`
+        db.query(sqlQuery, (err, result) => {
+            console.log(result)
+            res.send(result)
+    });    
+})
+
+
 
 app.listen(3001, () =>{
     console.log("running on port 3001");

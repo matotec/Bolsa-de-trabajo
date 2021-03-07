@@ -14,7 +14,7 @@ const FormAlumn = () => {
   const [apellido, setApellido] = useState('');
    
   const submitData = () => {
-      Axios.post("http://localhost:3001/api/insert",
+      Axios.post("http://localhost:3001/api/insertAlum",
        {nombre: nombre, apellido: apellido}).then(() =>{
         alert("successful");
        });
