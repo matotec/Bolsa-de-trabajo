@@ -1,0 +1,23 @@
+#nav-dropdown{
+    color: rgb(250, 250, 250);
+}
+
+#contenedorImg{
+    display: table;
+    
+}
+
+#logoUnaj{
+    height: 500px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 50px;
+}
+
+.texto{
+    text-align: center;
+}
+
+.colorTexto.texto{
+    color: rgb(13, 104, 189);
+}
