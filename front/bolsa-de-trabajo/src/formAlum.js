@@ -5,6 +5,7 @@ import HeaderToInicio from './components/headerToInicio';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form'
 import './styles/formAlum.css';
+import Axios from 'axios';
 
 
 const FormAlumn = () => {
@@ -12,16 +13,23 @@ const FormAlumn = () => {
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
    
+  const submitData = () => {
+      Axios.post("http://localhost:3001/api/insert",
+       {nombre: nombre, apellido: apellido}).then(() =>{
+        alert("successful");
+       });
+  }
+
   return (<>      
     <HeaderToInicio/>
       <form>
         <div>
           <label>Nombre</label>
-            <input name="nombre" type="text" placeholder="ingrese su nombre"  />
+            <input name="nombre" type="text" placeholder="ingrese su nombre" onChange={(e)=>{setNombre(e.target.value)}} />
         </div>
         <div>
           <label>Apellidos</label>
-            <input name="apellido" type="text" placeholder="ingrese su apellido"  />
+            <input name="apellido" type="text" placeholder="ingrese su apellido"  onChange={(e)=>{setApellido(e.target.value)}}/>
         </div>
         <div>
             <label>Tipo</label>
@@ -55,7 +63,7 @@ const FormAlumn = () => {
         <Form.Control as="textarea" rows={4} id="tamañoTextArea"/>
         </div>
         <div>
-        <Button variant="secondary" >Enviar</Button>
+        <Button variant="secondary" onClick={submitData} >Enviar</Button>
         </div>
       </form>
       </>

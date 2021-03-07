@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
+const bodyParser = require('body-parser');
+const cors = require('cors')
 
 const db = mysql.createPool({
     host : 'localhost',
@@ -9,13 +11,17 @@ const db = mysql.createPool({
     database : 'bolsadetrabajodb'
 });
 
+app.use(cors());
+app.use(express.json())
+app.use(bodyParser.urlencoded({extended: true}));
 
-
-app.get("/", (req, res) => {    
+app.post("/api/insert", (req, res) => {    
+    const nombre = req.body.nombre
+    const apellido = req.body.apellido
         const sqlQuery = 
-            "INSERT INTO alumnos (nombre, apellido) VALUES ('miguel', 'garcia');";
-        db.query(sqlQuery, (err, result) =>{
-            res.send("holas");
+            "INSERT INTO alumnos (nombre, apellido) VALUES (?, ?);";
+        db.query(sqlQuery, [nombre,apellido], (err, result) =>{
+            console.log(err)
         });   
 });
 

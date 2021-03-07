@@ -6,6 +6,7 @@ import SearchAlum from './searchAlum';
 import SearchEmp from './searchEmp';
 import Login from './login';
 import PageInicio from './pageInicio';
+import ChargeJob from './chargeJob';
 
 function App() {
   return(
@@ -17,6 +18,7 @@ function App() {
         <Route path="/searchAlum" component={SearchAlum}/>
         <Route path="/searchEmp" component={SearchEmp}/>
         <Route path="/login" component={Login}/>
+        <Route path="/chargeJob" component={ChargeJob}/>
       </Switch>
     </BrowserRouter>
   )
