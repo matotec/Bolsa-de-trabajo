@@ -43,6 +43,25 @@ app.post("/api/insertJob", (req, res) => {
             console.log(err)
         });   
 });
+
+app.get('/api/getJob', (req, res) =>{
+    const sqlQuery = 
+        "SELECT * FROM empleos"
+    db.query(sqlQuery, (err, result) => {
+        res.send(result)
+    });    
+})
+
+app.get('/api/searchJob/:searchText', (req, res) =>{
+    const searchText = req.params.searchText
+        const sqlQuery = 
+        `SELECT * FROM empleos WHERE categoria LIKE '%${searchText}%';`
+        db.query(sqlQuery, (err, result) => {
+            console.log(result)
+            res.send(result)
+    });    
+})
+
       
 app.post("/api/insertAlum", (req, res) => {    
     const nombre = req.body.nombre

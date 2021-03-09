@@ -23,7 +23,7 @@ const ChargeJob = () => {
         if(categoria.length && descripcion.length && fechaInicio.length && fechaFinalizacion.length){
             setCondBotonEnviar(false)
         }else(setCondBotonEnviar(true))
-    },[descripcion, fechaInicio, fechaFinalizacion]);
+    },[categoria, descripcion, fechaInicio, fechaFinalizacion]);
 
     return (
         <>

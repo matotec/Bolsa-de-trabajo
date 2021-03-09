@@ -26,6 +26,13 @@ const SearchEmp = () => {
             <tr key={index}>
                 <td>{alum.nombre}</td>
                 <td>{alum.apellido}</td>
+                <td>{alum.tipoDoc}</td>
+                <td>{alum.nroDoc}</td>
+                <td>{alum.fechaNacimiento.slice(0,10)}</td>
+                <td>{alum.email}</td>
+                <td>{alum.carrera}</td>
+                <td>{alum.fechaDeInicioCarrera.slice(0,10)}</td>
+                <td>{alum.experiencia}</td>
             </tr>
         )
     }
@@ -39,8 +46,15 @@ const SearchEmp = () => {
             </Form>
             <Table responsive>
                 <thead>
-                    <th>nombre</th>
-                    <th>apellido</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>TipoDeDoc</th>
+                    <th>NroDeDoc</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Email</th>
+                    <th>Carrera</th>
+                    <th>Fecha de Inicio De Carrera</th>
+                    <th>Experiencia</th>
                 </thead>
                 <tbody>
                     {dataAlumnos.map(renderAlum)}
