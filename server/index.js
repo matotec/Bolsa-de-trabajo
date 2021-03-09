@@ -15,12 +15,49 @@ app.use(cors());
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+app.post("/api/insertEmp", (req, res) => {    
+    const nombreEmp = req.body.nombreEmp
+    const cuit = req.body.cuit
+    const provincia = req.body.provincia
+    const localidad = req.body.localidad
+    const direccion = req.body.direccion
+    const telefono = req.body.telefono
+    const email = req.body.email
+        const sqlQuery = 
+            "INSERT INTO empresas (nombreEmp, cuit, provincia, localidad, direccion, telefono, email) VALUES (?, ?, ?, ?, ?, ?, ?);";
+        db.query(sqlQuery, [nombreEmp, cuit, provincia, localidad, direccion, telefono, email], (err, result) =>{
+            console.log(err)
+        });   
+});
+
+app.post("/api/insertJob", (req, res) => {  
+    const categoria = req.body.categoria;  
+    const descripcion = req.body.descripcion;
+    const fechaInicio = req.body.fechaInicio;
+    const fechaFinalizacion = req.body.fechaFinalizacion;
+    const estadoDeAprobacion = req.body.estadoDeAprobacion
+        const sqlQuery = 
+            "INSERT INTO empleos (categoria, descripcion, fechaInicio, fechaFinalizacion, estadoDeAprobacion) VALUE (?, ?, ?, ?, ?);";
+        db.query(sqlQuery, [categoria, descripcion, fechaInicio, fechaFinalizacion, estadoDeAprobacion], (err, result) =>{
+            console.log(err)
+        });   
+});
+      
 app.post("/api/insertAlum", (req, res) => {    
     const nombre = req.body.nombre
     const apellido = req.body.apellido
+    const tipoDoc = req.body.tipoDoc
+    const nroDoc = req.body.nroDoc
+    const fechaNacimiento = req.body.fechaNacimiento
+    const email = req.body.email
+    const carrera = req.body.carrera
+    const fechaDeInicioCarrera = req.body.fechaDeInicioCarrera
+    const experiencia = req.body.experiencia
+    const estadoDeAprobacion = req.body.estadoDeAprobacion
         const sqlQuery = 
-            "INSERT INTO alumnos (nombre, apellido) VALUES (?, ?);";
-        db.query(sqlQuery, [nombre,apellido], (err, result) =>{
+            "INSERT INTO alumnos (nombre, apellido, tipoDoc, nroDoc, fechaNacimiento, email, carrera, fechaDeInicioCarrera, experiencia, estadoDeAprobacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        db.query(sqlQuery, [nombre,apellido,tipoDoc,nroDoc,fechaNacimiento,email,carrera,fechaDeInicioCarrera,experiencia,estadoDeAprobacion], (err, result) =>{
             console.log(err)
         });   
 });
@@ -35,7 +72,6 @@ app.get('/api/getAlum', (req, res) =>{
 
 app.get('/api/searchAlum/:searchText', (req, res) =>{
     const searchText = req.params.searchText
-    console.log("aca", searchText)
         const sqlQuery = 
         `SELECT * FROM alumnos WHERE nombre LIKE '%${searchText}%';`
         db.query(sqlQuery, (err, result) => {

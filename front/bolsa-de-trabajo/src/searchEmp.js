@@ -8,7 +8,7 @@ const SearchEmp = () => {
     const [searchText, setSearchText] = useState("")
     const [dataAlumnos, setDataAlumnos] = useState([]);
 
-    const submitData = (searchText) => {
+    const searchAlumName = (searchText) => {
         Axios.get(`http://localhost:3001/api/searchAlum/${searchText}`).then((response) => {
             setDataAlumnos(response.data)
         });
@@ -33,10 +33,9 @@ const SearchEmp = () => {
     return (
         <>
         <HeaderToInicio/>
-        <div>buscador de uso de Empresas</div>
             <Form inline>
                 <FormControl type="text" placeholder="Buscar candidato" className="mr-sm-2" onChange={(e) => {setSearchText(e.target.value)}}/>
-                    <Button variant="outline-primary" onClick={() => {submitData(searchText)}}>Buscar</Button>
+                    <Button variant="outline-primary" onClick={() => {searchAlumName(searchText)}}>Buscar</Button>
             </Form>
             <Table responsive>
                 <thead>
