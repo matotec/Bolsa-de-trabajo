@@ -16,10 +16,10 @@ const SearchEmp = () => {
     }
 
     useEffect(() => {
-        Axios.get("http://localhost:3001/api/getAlum").then((response) => {
+        Axios.get("http://localhost:3001/api/getAlumApproved").then((response) => {
             setDataAlumnos(response.data)
         });
-    },[]);
+    },[searchText]);
 
     const renderAlum = (alum, index) => {
         return(

@@ -46,16 +46,34 @@ app.post("/api/insertJob", (req, res) => {
 
 app.get('/api/getJob', (req, res) =>{
     const sqlQuery = 
-        "SELECT * FROM empleos"
+    "SELECT * FROM empleos WHERE estadoDeAprobacion LIKE 'desaprobado';"
     db.query(sqlQuery, (err, result) => {
         res.send(result)
     });    
 })
 
+app.get('/api/getJobApproved', (req, res) =>{
+    const sqlQuery = 
+        "SELECT * FROM empleos WHERE estadoDeAprobacion LIKE 'aprobado';"
+    db.query(sqlQuery, (err, result) => {
+        res.send(result)
+    });    
+})
+
+app.put('/api/approveJob', (req, res) =>{
+    const id = req.body.id;
+    const sqlQuery = 
+        "UPDATE empleos SET estadoDeAprobacion = 'aprobado' WHERE id = ?;"
+    db.query(sqlQuery, [id], (err, result) => {
+        console.log(err);
+    });    
+})
+
+
 app.get('/api/searchJob/:searchText', (req, res) =>{
     const searchText = req.params.searchText
         const sqlQuery = 
-        `SELECT * FROM empleos WHERE categoria LIKE '%${searchText}%';`
+        `SELECT * FROM empleos WHERE categoria LIKE '%${searchText}%' AND estadoDeAprobacion LIKE 'aprobado';`
         db.query(sqlQuery, (err, result) => {
             console.log(result)
             res.send(result)
@@ -83,16 +101,35 @@ app.post("/api/insertAlum", (req, res) => {
 
 app.get('/api/getAlum', (req, res) =>{
     const sqlQuery = 
-        "SELECT * FROM alumnos"
+        "SELECT * FROM alumnos WHERE estadoDeAprobacion LIKE 'desaprobado';"
     db.query(sqlQuery, (err, result) => {
         res.send(result)
     });    
 })
 
+app.get('/api/getAlumApproved', (req, res) =>{
+    const sqlQuery = 
+        "SELECT * FROM alumnos WHERE estadoDeAprobacion LIKE 'aprobado';"
+    db.query(sqlQuery, (err, result) => {
+        res.send(result)
+    });    
+})
+
+app.put('/api/approveAlum', (req, res) =>{
+    const nroDoc = req.body.nroDoc;
+    const sqlQuery = 
+        "UPDATE alumnos SET estadoDeAprobacion = 'aprobado' WHERE nroDoc = ?;"
+    db.query(sqlQuery, [nroDoc], (err, result) => {
+        console.log(err);
+    });    
+})
+
+
+
 app.get('/api/searchAlum/:searchText', (req, res) =>{
     const searchText = req.params.searchText
         const sqlQuery = 
-        `SELECT * FROM alumnos WHERE nombre LIKE '%${searchText}%';`
+        `SELECT * FROM alumnos WHERE nombre LIKE '%${searchText}%' AND estadoDeAprobacion LIKE 'aprobado';`
         db.query(sqlQuery, (err, result) => {
             console.log(result)
             res.send(result)

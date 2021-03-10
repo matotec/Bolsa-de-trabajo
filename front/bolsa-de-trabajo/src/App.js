@@ -7,6 +7,7 @@ import SearchEmp from './searchEmp';
 import Login from './login';
 import PageInicio from './pageInicio';
 import ChargeJob from './chargeJob';
+import PageApprove from './pageApprove';
 
 function App() {
   return(
@@ -19,6 +20,7 @@ function App() {
         <Route path="/searchEmp" component={SearchEmp}/>
         <Route path="/login" component={Login}/>
         <Route path="/chargeJob" component={ChargeJob}/>
+        <Route path="/pageApprove" component={PageApprove}/>
       </Switch>
     </BrowserRouter>
   )

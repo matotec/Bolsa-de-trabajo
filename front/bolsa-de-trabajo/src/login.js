@@ -3,18 +3,26 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import HeaderToInicio from './components/headerToInicio'; 
 import "./styles/login.css";
+import {useHistory} from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  const history = useHistory();
 
-  function validateForm() {
+  const validateForm = () => {
     return email.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
   }
+
+const redirectToPageApprove = () => {
+    history.push("/pageApprove")
+}
+
 
   return (
       <>
@@ -38,7 +46,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <Button block size="lg" type="submit" disabled={!validateForm()} onClick={redirectToPageApprove}>
           Login
         </Button>
       </Form>
