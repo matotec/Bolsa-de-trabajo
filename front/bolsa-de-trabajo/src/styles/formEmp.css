@@ -1,0 +1,17 @@
+#nameEmpresa{
+    width: 250px;
+}
+
+#labels{
+    padding: 5px;
+}
+
+.formInput{
+    text-align: center;
+    padding: 5px;
+}
+
+.botonEnviar{
+    text-align: center;
+    padding: 5px;
+}
