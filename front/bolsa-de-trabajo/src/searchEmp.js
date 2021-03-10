@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import HeaderToInicio from './components/headerToInicio'; 
 import {Form, FormControl, Button, Table} from 'react-bootstrap';   
 import Axios from 'axios';
-
+import './styles/searchEmp.css';
+import Col from 'react-bootstrap/Col';
 
 const SearchEmp = () => {
     const [searchText, setSearchText] = useState("")
@@ -24,15 +25,15 @@ const SearchEmp = () => {
     const renderAlum = (alum, index) => {
         return(
             <tr key={index}>
-                <td>{alum.nombre}</td>
-                <td>{alum.apellido}</td>
-                <td>{alum.tipoDoc}</td>
-                <td>{alum.nroDoc}</td>
-                <td>{alum.fechaNacimiento.slice(0,10)}</td>
-                <td>{alum.email}</td>
-                <td>{alum.carrera}</td>
-                <td>{alum.fechaDeInicioCarrera.slice(0,10)}</td>
-                <td>{alum.experiencia}</td>
+                <td className="textoTables">{alum.nombre}</td>
+                <td className="textoTables">{alum.apellido}</td>
+                <td className="textoTables">{alum.tipoDoc}</td>
+                <td className="textoTables">{alum.nroDoc}</td>
+                <td className="textoTables">{alum.fechaNacimiento.slice(0,10)}</td>
+                <td className="textoTables">{alum.email}</td>
+                <td className="textoTables">{alum.carrera}</td>
+                <td className="textoTables">{alum.fechaDeInicioCarrera.slice(0,10)}</td>
+                <td className="textoTables">{alum.experiencia}</td>
             </tr>
         )
     }
@@ -40,21 +41,24 @@ const SearchEmp = () => {
     return (
         <>
         <HeaderToInicio/>
+        <h1 className="textoTables">Buscador de Postulantes</h1>
+        <Col id="searchEmp" sm={3} md={6} xl={3} lg={6} className="justify-content-lg-center mx-auto" >
             <Form inline>
-                <FormControl type="text" placeholder="Buscar candidato" className="mr-sm-2" onChange={(e) => {setSearchText(e.target.value)}}/>
+                <FormControl type="text" placeholder="Buscar candidato"  onChange={(e) => {setSearchText(e.target.value)}}/>
                     <Button variant="outline-primary" onClick={() => {searchAlumName(searchText)}}>Buscar</Button>
             </Form>
-            <Table responsive>
+        </Col>    
+            <Table striped bordered hover size="sm" responsive>
                 <thead>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>TipoDeDoc</th>
-                    <th>NroDeDoc</th>
-                    <th>Fecha de nacimiento</th>
-                    <th>Email</th>
-                    <th>Carrera</th>
-                    <th>Fecha de Inicio De Carrera</th>
-                    <th>Experiencia</th>
+                    <th className="textoTables">Nombre</th>
+                    <th className="textoTables">Apellido</th>
+                    <th className="textoTables">TipoDeDoc</th>
+                    <th className="textoTables">NroDeDoc</th>
+                    <th className="textoTables">Fecha de nacimiento</th>
+                    <th className="textoTables">Email</th>
+                    <th className="textoTables">Carrera</th>
+                    <th className="textoTables">Fecha de Inicio De Carrera</th>
+                    <th className="textoTables">Experiencia</th>
                 </thead>
                 <tbody>
                     {dataAlumnos.map(renderAlum)}

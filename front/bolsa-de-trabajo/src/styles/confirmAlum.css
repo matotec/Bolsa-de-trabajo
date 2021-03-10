@@ -1,0 +1,25 @@
+#textoAviso{
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+}
+
+#contenedorImg{
+    display: table;
+    
+}
+
+#logoUnaj{
+    height: 500px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 50px;
+}
+
+.texto{
+    text-align: center;
+}
+
+.colorTexto.texto{
+    color: rgb(13, 104, 189);
+}

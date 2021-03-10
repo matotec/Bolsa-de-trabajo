@@ -8,6 +8,8 @@ import Login from './login';
 import PageInicio from './pageInicio';
 import ChargeJob from './chargeJob';
 import PageApprove from './pageApprove';
+import ConfirmAlum from './confirmAlum';
+import ConfirmJob from './confirmJob';
 
 function App() {
   return(
@@ -21,6 +23,8 @@ function App() {
         <Route path="/login" component={Login}/>
         <Route path="/chargeJob" component={ChargeJob}/>
         <Route path="/pageApprove" component={PageApprove}/>
+        <Route path="/confirmAlum" component={ConfirmAlum}/>
+        <Route path="/confirmJob" component={ConfirmJob}/>
       </Switch>
     </BrowserRouter>
   )

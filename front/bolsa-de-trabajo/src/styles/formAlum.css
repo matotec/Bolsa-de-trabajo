@@ -1,8 +1,36 @@
 #tamañoTextArea{
     width: 400px;
+    margin: auto;
+    padding: 20px;
 }
 
 #dropdown-basic{
     color: hsl(240, 3%, 6%);
     background-color: rgb(255, 255, 255);    
+}
+
+#labels{
+    padding: 5px;
+}
+
+#formInput{
+    text-align: center;
+    padding: 5px;
+}
+
+#botonEnviar{
+    text-align: center;
+    padding: 5px;
+}
+
+#tipoDoc{
+    width: 200px;
+    margin: auto;
+    padding: 5px;
+}
+
+#confirmacion{
+    text-align: center;
+    padding: 5px;
+    font-size: 22px;
 }

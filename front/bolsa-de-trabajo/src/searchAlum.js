@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import HeaderToInicio from './components/headerToInicio';    
 import {Form, FormControl, Button, Table} from 'react-bootstrap';   
 import Axios from 'axios';
-
+import './styles/searchAlum.css';
+import Col from 'react-bootstrap/Col';
 
 const SearchAlum = () => {
     const [searchText, setSearchText] = useState("")
@@ -24,10 +25,10 @@ const SearchAlum = () => {
     const renderJob = (job, index) => {
         return(
             <tr key={index}>
-                <td>{job.categoria}</td>
-                <td>{job.descripcion}</td>
-                <td>{job.fechaInicio.slice(0,10)}</td>
-                <td>{job.fechaFinalizacion.slice(0,10)}</td>
+                <td className="textoTables">{job.categoria}</td>
+                <td className="textoTables">{job.descripcion}</td>
+                <td className="textoTables">{job.fechaInicio.slice(0,10)}</td>
+                <td className="textoTables">{job.fechaFinalizacion.slice(0,10)}</td>
             </tr>
         )
     }
@@ -35,17 +36,19 @@ const SearchAlum = () => {
     return (
         <>
         <HeaderToInicio/>
-        <div>buscador de uso de alumnos</div>
-        <Form inline>
-                <FormControl type="text" placeholder="Buscar empleo" className="mr-sm-2" onChange={(e) => {setSearchText(e.target.value)}}/>
+        <h1 className="textoTables">Buscador de empleos</h1>
+        <Col id="searchAlum" sm={3} md={6} xl={3} lg={6} className="justify-content-lg-center mx-auto" >
+            <Form inline>
+                <FormControl type="text" placeholder="Buscar empleo" onChange={(e) => {setSearchText(e.target.value)}}/>
                     <Button variant="outline-primary" onClick={() => {searchJobCat(searchText)}}>Buscar</Button>
             </Form>
-            <Table responsive>
+        </Col>
+            <Table striped bordered hover size="sm" responsive>
                 <thead>
-                    <th>Categoria</th>
-                    <th>Descripción</th>
-                    <th>Fecha de inicio convocatoria</th>                                        
-                    <th>Fecha de finalización convocatoria</th>
+                    <th className="textoTables">Categoria</th>
+                    <th className="textoTables">Descripción</th>
+                    <th className="textoTables">Fecha de inicio convocatoria</th>                                        
+                    <th className="textoTables">Fecha de finalización convocatoria</th>
                     
                 </thead>
                 <tbody>
